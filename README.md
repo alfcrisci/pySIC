@@ -1,5 +1,7 @@
 # python_simple_image_cropper
 Project born by intership.
+I wrote the code really ugly because i had no time to add comments and spaces.
+If anyone has doubt you can contact me.
 
 # Objective
 The objective was to create a script that could be used in a raspberry, which helps users to digitalize a book.
