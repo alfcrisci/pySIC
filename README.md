@@ -35,3 +35,5 @@ Also the jump is based on the coefficent K.
 Removed some bugs to the cropper script, adapted to work on all platform.
 It load the images in grey scale so the distance its a simple difference.
 Added the Rotation Algorithm.
+Added the text output on a .txt.
+Fixed some unicode problem.
