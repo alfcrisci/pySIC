@@ -17,7 +17,10 @@ def Merge(abs_folder_in, name_out, debug):
         out.addPage(pag)
         if debug: print("pag3: ", out.getPage(page).mediaBox)
         if debug: print("Done ", page+1, " of ", min(pdf1.getNumPages(), pdf2.getNumPages()))
-        ME_percentage += min(pdf1.getNumPages(), pdf2.getNumPages()) / 100
+        ME_percentage += 1 / min(pdf1.getNumPages(), pdf2.getNumPages())
     out.write(open(name_out+".pdf", "wb"))
     ME_percentage = 0
+def get_percentage():
+    global ME_percentage
+    return ME_percentage
 ###############################################################

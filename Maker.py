@@ -8,7 +8,7 @@ def Make(abs_folder_in, abs_folder_out, name_out, debug):
     global M_percentage
     s = [int(i[:-4]) for i in os.listdir(abs_folder_in) if i.endswith(".jpg")]
     s.sort()
-    images_list = [abs_folder_in + "\\" + str(i) + ".jpg" for i in s]
+    images_list = [os.path.join(abs_folder_in, str(i) + ".jpg") for i in s]
     if debug: print("\n".join(images_list))
     pdf = FPDF()
     for c, image_name in enumerate(images_list, 1):
@@ -17,7 +17,7 @@ def Make(abs_folder_in, abs_folder_out, name_out, debug):
         if debug: print("Done", c, " of ", len(images_list))
         M_percentage += (1 / len(images_list))
     if debug: print("Saving...")
-    pdf.output(abs_folder_out + "\\" + name_out, "F")
+    pdf.output(os.path.join(abs_folder_out, name_out), "F")
     M_percentage = 0
 def get_percentage():
     global M_percentage
