@@ -27,7 +27,7 @@ def precision(arr, angle):
 def rotateImage(image, angle):
     image_center = tuple(np.array(image.shape[1::-1]) / 2)
     rot_mat = cv2.getRotationMatrix2D(image_center, angle, 1.0)
-    result = cv2.warpAffine(image, rot_mat, image.shape[1::-1], flags=cv2.INTER_LINEAR, borderMode=cv2.BORDER_CONSTANT, borderValue=(255,255,255))
+    result = cv2.warpAffine(image, rot_mat, image.shape[1::-1], flags=cv2.INTER_LINEAR,  borderMode=cv2.BORDER_CONSTANT, borderValue=(255,255,255))
     return result
 
 def crop(abs_folder_in, abs_folder_out, debug):
@@ -90,6 +90,7 @@ def crop(abs_folder_in, abs_folder_out, debug):
         if debug: print("Done ", c, " of ", len(images_list))
         C_percentage += 1 / len(images_list)
     C_percentage = 0
+
 def get_percentage():
     global C_percentage
     return C_percentage

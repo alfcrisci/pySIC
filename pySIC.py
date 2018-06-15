@@ -35,7 +35,7 @@ def elaborate(name, ocr = False, lang = "", debug = False):
     phase = 0
 
     
- def reset(delData = False, delPdf = {"general": False, "reader": False, "maker": False}):
+def reset(delData = False, delPdf = {"general": False, "reader": False, "maker": False}):
     if delPdf["general"]:
         dr = os.path.dirname(__file__)
         for d in os.listdir("."):
@@ -60,7 +60,7 @@ def elaborate(name, ocr = False, lang = "", debug = False):
     for d in os.listdir(dr):
         os.remove(os.path.join(dr, d))
 
- def getPhase():
+def getPhase():
     global phase
     if phase == 1: return (phase, cropper.get_percentage())
     elif phase == 2: return (phase, maker.get_percentage())
@@ -68,7 +68,7 @@ def elaborate(name, ocr = False, lang = "", debug = False):
     elif phase == 4: return (phase, merger.get_percentage())
     else: return None
 
- def getName():
+def getName():
     global nameDoc
     return nameDoc
 ###########################################################
