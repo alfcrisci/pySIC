@@ -55,6 +55,13 @@ cd pySIC
 pip3  install -r requirements.txt
 sudo python3 setup.py install
 ```
+Put images or scans at 300 dpi in data  directory
+
+```python
+import pySIC
+pySIC.elaborate("merge")
+pySIC.elaborate("merge_ocr",ocr=True,lang='ita')
+```
 
 # Aims
 
