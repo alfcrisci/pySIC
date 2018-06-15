@@ -1,4 +1,5 @@
-# python_simple_image_cropper
+# pySIC (python_simple_image_cropper) library
+
 
 DocumentiAperti project was born by internship of "Tullio Buzzi" students.
 
