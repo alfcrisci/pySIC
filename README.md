@@ -24,12 +24,13 @@ tesseract ( > 3.05)
 ```bash
 git clone https://github.com/tesseract-ocr/tesseract
 cd tesseract
-./autogen.sh
-./configure
+mkdir build
+cd build
+cmake ..
 make
 sudo make install
 ```
-In ubuntu and by using tesseract 4
+Another way in ubuntu was done by using tesseract 4
 
 ```bash
 sudo add-apt-repository ppa:alex-p/tesseract-ocr
