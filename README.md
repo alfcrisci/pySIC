@@ -1,6 +1,6 @@
-# pySIC (python_simple_image_cropper) library
+# pySIC
 
-pySIC is tesseract based library to perform OCR of documents' images inside DocumentiAperti project that was born during internship of "CNR Tullio Buzzi" students.
+pySIC (python_simple_image_cropper) is a tesseract based code library to perform OCR of documents' images inside DocumentiAperti project that was born during internship of "CNR Tullio Buzzi" students.
 
 # Aims
 
