@@ -4,8 +4,7 @@ pySIC (python_simple_image_cropper) is a python3  library  based on tesseract co
 
 ## Requirements
 
-The evironment of python3 ( pip3 , setuptools...)
-
+The evironment of python3 ( pip3 , setuptools...) 
 
 ```bash
 sudo apt-get install libpng-dev libjpeg-dev libtiff-dev zlib1g-dev
@@ -85,6 +84,9 @@ Pratically all the *openCV* extensions :
 ## Optimizations
 To improve the algorithm velocity and the reduce the effort, when it analyzes the image it reduces its dimensions (with a coefficent K = DIMENSIONS / 500) and after it finds the points it crops the original image from the two points coordinates multiplied by K.
 Also the jump is based on the coefficent K.
+
+# References
+https://www.linux.com/blog/using-tesseract-ubuntu
 
 ### CHANGES
 #### new v1.1
