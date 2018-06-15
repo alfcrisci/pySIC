@@ -1,28 +1,36 @@
 ###############################################################
+
 import os
 import cv2
 import math
 import numpy as np
 from scipy.ndimage import interpolation as inter
 from scipy.ndimage import rotate
+
 ###############################################################
 C_percentage = 0
+
 ACCEPTED_EXTENSIONS = (".jpeg", ".jpg", ".png", ".tif", ".tiff", ".bmp", ".dib", ".jpe", ".jp2", ".webp", ".pbm", ".pgm", ".ppm", ".sr", ".ras")
+
 ###############################################################
 def euclidian_distance(first, second):
     return math.sqrt(sum([pow(max(x, y) - min(x, y), 2) for x, y in zip(first, second)]))
+
 def color_difference(first, second, precision = 100):
     return euclidian_distance(first, second) > precision
+
 def precision(arr, angle):
     hit = np.sum(inter.rotate(arr, angle, reshape = False, order = 0), axis = 1)
     prec = np.sum((hit[1:]-hit[:-1])**2)
     return prec
+
 def rotateImage(image, angle):
     image_center = tuple(np.array(image.shape[1::-1]) / 2)
     rot_mat = cv2.getRotationMatrix2D(image_center, angle, 1.0)
     result = cv2.warpAffine(image, rot_mat, image.shape[1::-1], flags=cv2.INTER_LINEAR, borderMode=cv2.BORDER_CONSTANT, borderValue=(255,255,255))
     return result
-def Crop(abs_folder_in, abs_folder_out, debug):
+
+def crop(abs_folder_in, abs_folder_out, debug):
     global C_percentage
     images_list = [i for i in os.listdir(abs_folder_in) if i.endswith(ACCEPTED_EXTENSIONS) and i[:2] != "ad"]
     if debug: print("\n".join(images_list))
