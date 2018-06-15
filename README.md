@@ -26,13 +26,16 @@ sudo ldconfig
 tesseract ( > 3.05)
 
 ```bash
+sudo apt-get install git
 git clone https://github.com/tesseract-ocr/tesseract
 cd tesseract
-mkdir build
-cd build
-cmake ..
+./autogen.sh
+./configure
 make
-sudo make install
+sudo make install 
+sudo ldconfig
+git clone https://github.com/tesseract-ocr/tessdata.git 
+sudo mv ~/tessdata/* /usr/local/share/tessdata/
 ```
 Another way in ubuntu was done by using tesseract 4
 
