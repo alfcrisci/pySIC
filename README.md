@@ -8,13 +8,17 @@ The evironment of python3 ( pip3 , setuptools...)
 
 
 ```bash
-git clone https://github.com/DanBloomberg/leptonica.git
-cd leptonica
-mkdir build
-cd build
-cmake ..
+sudo apt-get install libpng-dev libjpeg-dev libtiff-dev zlib1g-dev
+sudo apt-get install gcc g++
+sudo apt-get install autoconf automake libtool checkinstall
+
+wget http://www.leptonica.org/source/leptonica-1.76.0.tar.gz
+tar -zxvf leptonica-1.76.0.tar.gz
+cd leptonica-1.76.0 
+./configure
 make
-make install
+sudo checkinstall
+sudo ldconfig
 ```
 
 
