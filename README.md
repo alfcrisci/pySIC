@@ -1,7 +1,6 @@
 # pySIC (python_simple_image_cropper) library
 
-
-DocumentiAperti project was born by internship of "Tullio Buzzi" students.
+pySIC is tesseract based library to perform OCR of documents' images inside DocumentiAperti project that was born during internship of "CNR Tullio Buzzi" students.
 
 # Aims
 
@@ -11,6 +10,7 @@ With a simple method the script finds the color changing on the axes, from the t
 After the cropper, the user needs to run "Maker.py" to create a pdf from the images.
 
 # Colors & Algorithm
+
 To define a rectangle you only need two points: the top-left one and the bottom-right one.
 So I need to find 4 coordinates (two abscissae and two ordinates). A way to solve this problem is to analyze pixel by pixel where the first big color changing appears. One from the top to the bottom, one from the left to the right, and the opposite two. (One from the bottom to the top and one from the right to the left).
 The color are written in BGR format thanks to the openCV library.
