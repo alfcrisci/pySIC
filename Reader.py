@@ -6,12 +6,14 @@ from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
 from reportlab.pdfbase import pdfmetrics 
 from reportlab.pdfbase.ttfonts import TTFont
+
 #############################################################
 R_percentage = 0
-#############################################################
+
 def real(t):
     return "".join([c for c in t if c.isalnum()])
-def Read(abs_folder_in, abs_folder_out, abs_folder_out_txt, lang, debug):
+
+def read(abs_folder_in, abs_folder_out, abs_folder_out_txt, lang, debug):
     global  R_percentage
     app_folder = os.path.dirname(__file__)
     s = sorted([int(i[:-4]) for i in os.listdir(abs_folder_in) if i.endswith(".jpg")])
@@ -36,7 +38,8 @@ def Read(abs_folder_in, abs_folder_out, abs_folder_out_txt, lang, debug):
     if debug: print("Saving...")
     pdf.save()
     R_percentage = 0
+    
 def get_percentage():
     global R_percentage
     return R_percentage
-###############################################################
+
