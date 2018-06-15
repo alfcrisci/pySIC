@@ -11,6 +11,17 @@ nameDoc = ""
 
 ###########################################################
 
+def readmerge(name, lang = "", debug = False):
+    global phase
+    global nameDoc
+    nameDoc = name
+    app_folder = os.path.dirname(__file__)
+    fi = os.path.join(app_folder, "data")
+    fo = os.path.join(app_folder, "output", "out_cropper")
+    phase = 1
+    merger.merge(fi, fo, name + ".pdf", debug)
+    phase = 0
+   
 def elaborate(name, ocr = False, lang = "", debug = False):
     global phase
     global nameDoc
