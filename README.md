@@ -1,20 +1,21 @@
 # pySIC
 
-pySIC (python_simple_image_cropper) is a tesseract based code library to perform OCR of documents' images inside DocumentiAperti project that was born during internship of "CNR Tullio Buzzi" students.
+pySIC (python_simple_image_cropper) is a python3  library  based on tesseract code to perform OCR of documents' images inside the DocumentiAperti project developed during internship of "CNR Tullio Buzzi" students.
 
 ## Requirements
 
 python3 
-
 pip3
 
 
 ```bash
 git clone https://github.com/DanBloomberg/leptonica.git
 cd leptonica
-./autogen.sh
-./configure
+mkdir build
+cd build
+cmake ..
 make
+make install
 ```
 
 
@@ -23,24 +24,33 @@ make
 
 For python3 dependencies see requirements.txt file and/or launch in commandline: 
 
-tesseract version > 3.05
+tesseract ( > 3.05)
+
+```bash
+git clone https://github.com/tesseract-ocr/tesseract
+cd tesseract
+./autogen.sh
+./configure
+make
+sudo make install
+```
+In ubuntu and by using tesseract 4
 
 ```bash
 sudo add-apt-repository ppa:alex-p/tesseract-ocr
-
 sudo apt-get update
-
 sudo apt-get install tesseract-ocr
-
 sudo apt-get install tesseract-ocr-eng tesseract-ocr-ita
 ```
 
-## How to install on Ubuntu 16.04
+## How to install pySIC on Ubuntu 16.04
 
+```bash
 git clone https://github.com/alfcrisci/pySIC.git
 cd pySIC
 pip3  install -r requirements.txt
 sudo python3 setup.py install
+```
 
 # Aims
 
