@@ -19,19 +19,19 @@ def elaborate(name, ocr = False, lang = "", debug = False):
     fi = os.path.join(app_folder, "data")
     fo = os.path.join(app_folder, "output", "out_cropper")
     phase = 1
-    Cropper.Crop(fi, fo, debug)
+    cropper.crop(fi, fo, debug)
     fi, fo = fo, os.path.join(app_folder, "output", "out_maker")
     phase = 2
-    Maker.Make(fi, fo, name + ".pdf", debug)
+    maker.make(fi, fo, name + ".pdf", debug)
     if ocr:
         fo = os.path.join(app_folder, "output", "out_reader")
         fo_txt = os.path.join(app_folder,"output","out_txt")
         phase = 3
-        Reader.Read(fi, os.path.join(fo, name+".pdf"), os.path.join(fo_txt, name+".txt"), lang, debug)
+        reader.read(fi, os.path.join(fo, name+".pdf"), os.path.join(fo_txt, name+".txt"), lang, debug)
         fi = [os.path.join(app_folder, "output", "out_reader", name+".pdf"), os.path.join(app_folder, "output", "out_maker", name+".pdf")]
         fo = os.path.join(app_folder, "output",  name)
         phase = 4
-        Merger.Merge(fi, fo, debug)
+        merger.merge(fi, fo, debug)
     phase = 0
 
     
@@ -62,10 +62,10 @@ def elaborate(name, ocr = False, lang = "", debug = False):
 
  def getPhase():
     global phase
-    if phase == 1: return (phase, Cropper.get_percentage())
-    elif phase == 2: return (phase, Maker.get_percentage())
-    elif phase == 3: return (phase, Reader.get_percentage())
-    elif phase == 4: return (phase, Merger.get_percentage())
+    if phase == 1: return (phase, cropper.get_percentage())
+    elif phase == 2: return (phase, maker.get_percentage())
+    elif phase == 3: return (phase, reader.get_percentage())
+    elif phase == 4: return (phase, merger.get_percentage())
     else: return None
 
  def getName():
