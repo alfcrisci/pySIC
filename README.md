@@ -1,9 +1,9 @@
 # python_simple_image_cropper
-Project born by intership.
-I wrote the code really ugly because i had no time to add comments and spaces.
-If anyone has doubt you can contact me.
 
-# Objective
+DocumentiAperti project was born by internship of "Tullio Buzzi" students.
+
+# Aims
+
 The objective was to create a script that could be used in a raspberry, which helps users to digitalize a book.
 The users only need to scan the pages even with a portable scanner **on an high contrast** background, create a folder in the data folder, add the images and then run the script called "Cropper.py".
 With a simple method the script finds the color changing on the axes, from the top and from the bottom then it crosses the data to create a rectangle in which the page should stay. Then it crops the page with a jump (to improve the looks of the output) and save the image on the out_cropper folder in the output folder.
