@@ -1,10 +1,12 @@
 ######################################################
 from fpdf import FPDF
 import os
+
 ######################################################
 M_percentage = 0
-######################################################
-def Make(abs_folder_in, abs_folder_out, name_out, debug):
+
+
+def make(abs_folder_in, abs_folder_out, name_out, debug):
     global M_percentage
     s = [int(i[:-4]) for i in os.listdir(abs_folder_in) if i.endswith(".jpg")]
     s.sort()
@@ -19,6 +21,7 @@ def Make(abs_folder_in, abs_folder_out, name_out, debug):
     if debug: print("Saving...")
     pdf.output(os.path.join(abs_folder_out, name_out), "F")
     M_percentage = 0
+    
 def get_percentage():
     global M_percentage
     return M_percentage
