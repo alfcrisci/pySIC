@@ -1,14 +1,17 @@
 ###########################################################
-import Cropper
-import Maker
-import Reader
-import Merger
+import cropper
+import maker
+import reader
+import merger
 import os
 ###########################################################
+
 phase = 0
 nameDoc = ""
+
 ###########################################################
-def Elaborate(name, ocr = False, lang = "", debug = False):
+
+def elaborate(name, ocr = False, lang = "", debug = False):
     global phase
     global nameDoc
     nameDoc = name
@@ -30,7 +33,9 @@ def Elaborate(name, ocr = False, lang = "", debug = False):
         phase = 4
         Merger.Merge(fi, fo, debug)
     phase = 0
-def Reset(delData = False, delPdf = {"general": False, "reader": False, "maker": False}):
+
+    
+ def reset(delData = False, delPdf = {"general": False, "reader": False, "maker": False}):
     if delPdf["general"]:
         dr = os.path.dirname(__file__)
         for d in os.listdir("."):
@@ -54,14 +59,16 @@ def Reset(delData = False, delPdf = {"general": False, "reader": False, "maker":
     dr = os.path.join(os.path.dirname(__file__), "output", "out_cropper")
     for d in os.listdir(dr):
         os.remove(os.path.join(dr, d))
-def getPhase():
+
+ def getPhase():
     global phase
     if phase == 1: return (phase, Cropper.get_percentage())
     elif phase == 2: return (phase, Maker.get_percentage())
     elif phase == 3: return (phase, Reader.get_percentage())
     elif phase == 4: return (phase, Merger.get_percentage())
     else: return None
-def getName():
+
+ def getName():
     global nameDoc
     return nameDoc
 ###########################################################
