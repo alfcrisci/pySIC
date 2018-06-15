@@ -10,16 +10,16 @@ tesseract version > 3.05
 
 For python3 dependencies see requirements.txt file and/or launch in commandline: 
 
-
 sudo add-apt-repository ppa:alex-p/tesseract-ocr
 sudo apt-get update
-
-pip3  install -r requirements.txt
 sudo apt-get install tesseract-ocr
 sudo apt-get install tesseract-ocr-eng tesseract-ocr-ita
 
-## Install on Ubuntu 16.04
-git clone 
+## How to install on Ubuntu 16.04
+
+git clone https://github.com/alfcrisci/pySIC.git
+cd pySIC
+pip3  install -r requirements.txt
 sudo python3 setup.py install
 
 # Aims
