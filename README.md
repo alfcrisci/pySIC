@@ -5,15 +5,28 @@ pySIC (python_simple_image_cropper) is a tesseract based code library to perform
 ## Requirements
 
 python3 
+
 pip3
-tesseract version > 3.05
+
+
+git clone https://github.com/DanBloomberg/leptonica.git
+
+cd leptonica
+
 
 For python3 dependencies see requirements.txt file and/or launch in commandline: 
 
+tesseract version > 3.05
+
+'''bash
 sudo add-apt-repository ppa:alex-p/tesseract-ocr
+
 sudo apt-get update
+
 sudo apt-get install tesseract-ocr
+
 sudo apt-get install tesseract-ocr-eng tesseract-ocr-ita
+'''
 
 ## How to install on Ubuntu 16.04
 
