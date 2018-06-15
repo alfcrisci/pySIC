@@ -9,16 +9,23 @@ python3
 pip3
 
 
+```bash
 git clone https://github.com/DanBloomberg/leptonica.git
-
 cd leptonica
+./autogen.sh
+./configure
+make
+```
+
+
+
 
 
 For python3 dependencies see requirements.txt file and/or launch in commandline: 
 
 tesseract version > 3.05
 
-'''bash
+```bash
 sudo add-apt-repository ppa:alex-p/tesseract-ocr
 
 sudo apt-get update
@@ -26,7 +33,7 @@ sudo apt-get update
 sudo apt-get install tesseract-ocr
 
 sudo apt-get install tesseract-ocr-eng tesseract-ocr-ita
-'''
+```
 
 ## How to install on Ubuntu 16.04
 
