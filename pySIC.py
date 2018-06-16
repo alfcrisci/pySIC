@@ -11,22 +11,22 @@ nameDoc = ""
 
 ###########################################################
 
-def readmerge(name, dir, lang = "", debug = False):
+def readmerge(name, lang = "", debug = False):
     global phase
     global nameDoc
     nameDoc = name
-    app_folder = os.path.dirname(dir)
+    app_folder = os.path.dirname(os.getcwd())
     fi = os.path.join(app_folder, "data")
     fo = os.path.join(app_folder, "output", "out_cropper")
     phase = 1
     merger.merge(fi, fo, name + ".pdf", debug)
     phase = 0
    
-def elaborate(name, dir, ocr = False, lang = "", debug = False):
+def elaborate(name, ocr = False, lang = "", debug = False):
     global phase
     global nameDoc
     nameDoc = name
-    app_folder = os.path.dirname(dir)
+    app_folder = os.path.dirname(os.getcwd())
     fi = os.path.join(app_folder, "data")
     fo = os.path.join(app_folder, "output", "out_cropper")
     phase = 1
@@ -48,7 +48,7 @@ def elaborate(name, dir, ocr = False, lang = "", debug = False):
     
 def reset(delData = False, delPdf = {"general": False, "reader": False, "maker": False}):
     if delPdf["general"]:
-        dr = os.path.dirname(__file__)
+        dr = os.path.dirname(os.getcwd())
         for d in os.listdir("."):
             if d.endswith(".pdf"):
                 os.remove(os.path.join(dr, d))
