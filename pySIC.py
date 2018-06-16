@@ -11,11 +11,11 @@ nameDoc = ""
 
 ###########################################################
 
-def readmerge(name, lang = "", debug = False):
+def readmerge(name, dir, lang = "", debug = False):
     global phase
     global nameDoc
     nameDoc = name
-    app_folder = os.path.dirname(__file__)
+    app_folder = os.path.dirname(dir)
     fi = os.path.join(app_folder, "data")
     fo = os.path.join(app_folder, "output", "out_cropper")
     phase = 1
