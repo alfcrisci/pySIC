@@ -22,11 +22,11 @@ def readmerge(name, dir, lang = "", debug = False):
     merger.merge(fi, fo, name + ".pdf", debug)
     phase = 0
    
-def elaborate(name, ocr = False, lang = "", debug = False):
+def elaborate(name, dir, ocr = False, lang = "", debug = False):
     global phase
     global nameDoc
     nameDoc = name
-    app_folder = os.path.dirname(__file__)
+    app_folder = os.path.dirname(dir)
     fi = os.path.join(app_folder, "data")
     fo = os.path.join(app_folder, "output", "out_cropper")
     phase = 1
