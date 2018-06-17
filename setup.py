@@ -6,7 +6,7 @@ setup(name='pySIC',
       author_email='davdag24@gmail.com',
       url='',
       license='MIT',
-      py_modules=['pySIC'],  
+      py_modules=['pySIC','reader','cropper','maker','merger'],  
       package_data={
       'pySIC.fonts': ['*'],
       }

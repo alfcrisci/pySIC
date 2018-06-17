@@ -15,7 +15,7 @@ def readmerge(name, lang = "", debug = False):
     global phase
     global nameDoc
     nameDoc = name
-    app_folder = os.path.dirname(__file__)
+    app_folder = os.getcwd()
     fi = os.path.join(app_folder, "data")
     fo = os.path.join(app_folder, "output", "out_cropper")
     phase = 1
@@ -26,7 +26,7 @@ def elaborate(name, ocr = False, lang = "", debug = False):
     global phase
     global nameDoc
     nameDoc = name
-    app_folder = os.path.dirname(__file__)
+    app_folder = os.getcwd()
     fi = os.path.join(app_folder, "data")
     fo = os.path.join(app_folder, "output", "out_cropper")
     phase = 1
@@ -48,7 +48,7 @@ def elaborate(name, ocr = False, lang = "", debug = False):
     
 def reset(delData = False, delPdf = {"general": False, "reader": False, "maker": False}):
     if delPdf["general"]:
-        dr = os.path.dirname(__file__)
+        dr = os.getcwd()
         for d in os.listdir("."):
             if d.endswith(".pdf"):
                 os.remove(os.path.join(dr, d))
