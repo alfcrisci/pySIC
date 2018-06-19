@@ -17,6 +17,9 @@ def create_dir(directory):
 def init_dir(): 
     create_dir('data')
     create_dir('output/out_cropper')
+    create_dir('output/out_reader')
+    create_dir('output/out_maker')
+    create_dir('output/out_txt')    
     create_dir('output/out_hocr')
     
 def readmerge(name, lang = "", debug = False):
