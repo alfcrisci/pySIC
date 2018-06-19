@@ -10,7 +10,15 @@ phase = 0
 nameDoc = ""
 
 ###########################################################
+def create_dir(directory):
+    if not os.path.exists(directory):
+           os.makedirs(directory)
 
+def init_dir(): 
+    create_dir('data')
+    create_dir('output/out_cropper')
+    create_dir('output/out_hocr')
+    
 def readmerge(name, lang = "", debug = False):
     global phase
     global nameDoc
