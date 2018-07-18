@@ -1,96 +1,50 @@
 ###########################################################
 import cropper
-import maker
 import reader
-import merger
 import os
+import sys
+import shutil
 ###########################################################
-
 phase = 0
-nameDoc = ""
-
 ###########################################################
+
+if sys.version_info[0] != 3:
+   raise Exception("This module works only with Python 3!")
+
 def create_dir(directory):
     if not os.path.exists(directory):
-           os.makedirs(directory)
+        os.makedirs(directory)
 
-def init_wdirs(): 
-    create_dir('data')
-    create_dir('output/out_cropper')
-    create_dir('output/out_reader')
-    create_dir('output/out_maker')
-    create_dir('output/out_txt')    
-    create_dir('output/out_hocr')
-    
-def readmerge(name, lang = "", debug = False):
+
+def initdirs():
+     create_dir('raw_data')
+     create_dir('images')
+     create_dir('hocr')
+     create_dir('pdf_complete')
+
+def removedirs():
+     shutil.rmtree('images')
+     shutil.rmtree('hocr')
+     shutil.rmtree('pdf_complete')
+
+
+def elaborate(name, ocr = False, lang = "eng", debug = False):
     global phase
-    global nameDoc
     nameDoc = name
     app_folder = os.getcwd()
-    fi = os.path.join(app_folder, "data")
-    fo = os.path.join(app_folder, "output", "out_cropper")
-    phase = 1
-    merger.merge(fi, fo, name + ".pdf", debug)
-    phase = 0
-   
-def elaborate(name, ocr = False, lang = "", debug = False):
-    global phase
-    global nameDoc
-    nameDoc = name
-    app_folder = os.getcwd()
-    fi = os.path.join(app_folder, "data")
-    fo = os.path.join(app_folder, "output", "out_cropper")
+    fi = os.path.join(app_folder, "raw_data")
+    fo = os.path.join(app_folder, "images")
     phase = 1
     cropper.crop(fi, fo, debug)
-    fi, fo = fo, os.path.join(app_folder, "output", "out_maker")
-    phase = 2
-    maker.make(fi, fo, name + ".pdf", debug)
     if ocr:
-        fo = os.path.join(app_folder, "output", "out_reader")
-        fo_txt = os.path.join(app_folder,"output","out_txt")
-        phase = 3
-        reader.read(fi, os.path.join(fo, name+".pdf"), os.path.join(fo_txt, name+".txt"), lang, debug)
-        fi = [os.path.join(app_folder, "output", "out_reader", name+".pdf"), os.path.join(app_folder, "output", "out_maker", name+".pdf")]
-        fo = os.path.join(app_folder, "output",  name)
-        phase = 4
-        merger.merge(fi, fo, debug)
+        fi, fo,focr,foPDF = fo, os.path.join(app_folder,"images"), os.path.join(app_folder,"hocr"), os.path.join(app_folder,"pdf_complete")
+        phase = 2
+        reader.read(fi, fo,focr, foPDF, lang, debug, name)
     phase = 0
-
-    
-def reset(delData = False, delPdf = {"general": False, "reader": False, "maker": False}):
-    if delPdf["general"]:
-        dr = os.getcwd()
-        for d in os.listdir("."):
-            if d.endswith(".pdf"):
-                os.remove(os.path.join(dr, d))
-    if delData:
-        dr = os.path.join(os.path.dirname(__file__), "data")
-        for d in os.listdir(dr):
-            try:
-                os.remove(os.path.join(dr, d))
-            except:
-                pass
-    if delPdf["reader"]:
-        dr = os.path.join(os.path.dirname(__file__), "output", "out_reader")
-        for d in os.listdir(dr):
-            os.remove(os.path.join(dr, d))
-    if delPdf["maker"]:
-        dr = os.path.join(os.path.dirname(__file__), "output", "out_maker")
-        for d in os.listdir(dr):
-            os.remove(os.path.join(dr, d))
-    dr = os.path.join(os.path.dirname(__file__), "output", "out_cropper")
-    for d in os.listdir(dr):
-        os.remove(os.path.join(dr, d))
 
 def getPhase():
     global phase
     if phase == 1: return (phase, cropper.get_percentage())
-    elif phase == 2: return (phase, maker.get_percentage())
-    elif phase == 3: return (phase, reader.get_percentage())
-    elif phase == 4: return (phase, merger.get_percentage())
+    elif phase == 2: return (phase, reader.get_percentage())
     else: return None
-
-def getName():
-    global nameDoc
-    return nameDoc
 ###########################################################
