@@ -4,7 +4,7 @@ pySIC (python_simple_image_cropper) is a python3  library  based on tesseract co
 
 ## Requirements
 
-The evironment of python3 ( pip3 , setuptools...)
+The evironment of python3 ( pip3 , setuptools...) in ubuntu 16.04
 
 ```bash
 sudo apt-get install libpng-dev libjpeg-dev libtiff-dev zlib1g-dev
@@ -20,9 +20,7 @@ sudo checkinstall
 sudo ldconfig
 ```
 
-
-
-tesseract ( > 3.05)
+Install to tesseract ( > 3.05)
 
 ```bash
 sudo apt-get install git
@@ -36,6 +34,7 @@ sudo ldconfig
 git clone https://github.com/tesseract-ocr/tessdata.git
 sudo mv ~/tessdata/* /usr/local/share/tessdata/
 ```
+
 Another way in ubuntu was done by using tesseract 4
 
 ```bash
@@ -43,31 +42,40 @@ sudo add-apt-repository ppa:alex-p/tesseract-ocr
 sudo apt-get update
 sudo apt-get install tesseract-ocr
 ```
-If you want tesseract to handle every language type:
-```bash
-sudo apt-get install tesseract-ocr-all
-```
-or if you want to install only specific languages like English or Italian:
-```bash
-sudo apt-get install tesseract-ocr-eng tesseract-ocr-ita
-```
 
-## How to install pySIC on Ubuntu 16.04
+If you want tesseract to handle every language type:
+
+```bash
+
+sudo apt-get install tesseract-ocr-all
+
+```
+If you want to install only specific languages like English or Italian:
+
+```bash
+
+sudo apt-get install tesseract-ocr-eng tesseract-ocr-ita
+
+```
+## How to install pySIC on Ubuntu 18.04
 
 For python dependencies see the requirements.txt file and/or launch in commandline:
 
 ```bash
-git clone https://github.com/edoaxyz/image_to_hOCR.git
-cd image_to_hOCR
-sudo apt-get install libxml2-dev libxslt1-dev
-sudo python3 setup.py install
-```
-Put your images or scans in ```./data``` directory and test it:
 
-```python
+sudo apt-get install libxml2-dev libxslt1-dev
+git clone https://github.com/alfcrisci/pySIC.git
+cd pySIC
+sudo python3 setup.py install
+
+```
+Put your images or scans in ```./raw_data``` directory and test it:
+
+```python3
 import pySIC
 pySIC.elaborate("merge")
 pySIC.elaborate("merge_ocr",ocr=True,lang='ita')
+
 ```
 
 ## Aims
@@ -88,6 +96,7 @@ If the distance is bigger than a certain P I can firmly say that there was a cha
 Added the rotation algorithm which recognise if an image is skew.
 
 ## Debugging mode
+
 I added a debug mode where you can see the algorithm results **graphically** and the math operations results.
 
 ## Accepted extensions
