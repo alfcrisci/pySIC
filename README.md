@@ -2,7 +2,7 @@
 
 pySIC (python_simple_image_cropper) is a python3  library  based on tesseract code to perform OCR of documents' images inside the DocumentiAperti project developed during internship of "CNR Tullio Buzzi" students.
 
-## Requirements
+## How to install pySIC requirements on Ubuntu 16.04
 
 The evironment of python3 ( pip3 , setuptools...) in ubuntu 16.04
 
@@ -35,12 +35,18 @@ git clone https://github.com/tesseract-ocr/tessdata.git
 sudo mv ~/tessdata/* /usr/local/share/tessdata/
 ```
 
-Another way in ubuntu was done by using tesseract 4
+
+
+## How to install pySIC requirements on Ubuntu 18.04
+
+For python dependencies see the requirements.txt file and/or launch in commandline:
+If you want to install only specific languages like English or Italian:
 
 ```bash
-sudo add-apt-repository ppa:alex-p/tesseract-ocr
-sudo apt-get update
-sudo apt-get install tesseract-ocr
+
+sudo apt-get install libleptonica-dev
+sudo apt install libtesseract-dev 
+sudo apt-get install tesseract-ocr-eng tesseract-ocr-ita
 ```
 
 If you want tesseract to handle every language type:
@@ -48,22 +54,15 @@ If you want tesseract to handle every language type:
 ```bash
 
 sudo apt-get install tesseract-ocr-all
-
-```
-If you want to install only specific languages like English or Italian:
-
-```bash
-
-sudo apt-get install tesseract-ocr-eng tesseract-ocr-ita
-
-```
-## How to install pySIC on Ubuntu 18.04
-
-For python dependencies see the requirements.txt file and/or launch in commandline:
-
-```bash
-
 sudo apt-get install libxml2-dev libxslt1-dev
+
+```
+## How to install pySIC 
+
+
+
+```bash
+
 git clone https://github.com/alfcrisci/pySIC.git
 cd pySIC
 sudo python3 setup.py install
