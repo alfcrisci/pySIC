@@ -1,7 +1,8 @@
 import sys
-import Main
+import pySIC
 
-#program name, output_name, ocr, language, debug
+#build.py, output_name, ocr, language, debug
+
 l = ["", "", False, "", False]
 
 for i, ar in enumerate(sys.argv, 0):
